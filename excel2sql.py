@@ -11,7 +11,7 @@ def rowcount():
             return count
 
 # create db file
-connection = sqlite3.connect('test90.db')
+connection = sqlite3.connect('test95.db')
 cursor = connection.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS "Players" (
     "id"	INTEGER,
@@ -37,15 +37,15 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS "Stats" (
     "tribal_wins"	INTEGER,
     "individual_wins"	INTEGER,
     "total_wins"	INTEGER,
-    "jury_voter"	TEXT,
-    "final_contestant"	TEXT,
-    "sole_survivor"	TEXT,
+    "jury_voter"	INTEGER,
+    "final_contestant"	INTEGER,
+    "sole_survivor"	INTEGER,
 	"final_vote_id"	INTEGER,
     "counter"   INTEGER PRIMARY KEY AUTOINCREMENT
 );''')
 
 # load .xlsx file
-wb = load_workbook(filename = 'Survivor_Contestants_Stats_3.xlsx')
+wb = load_workbook(filename = 'Survivor_Contestants.xlsx')
 
 # set to 3rd sheet (season)
 wb.active = 2
@@ -130,15 +130,23 @@ list_length = len(cursor.execute("SELECT name FROM Stats").fetchall())
 
 while c <= list_length:
     stat_name = cursor.execute("SELECT name FROM Stats WHERE counter = ?", (str(c),)).fetchone()[0]
-    print(stat_name)
     pull_id = cursor.execute("SELECT id FROM Players WHERE name = ? OR alt_name = ?", (stat_name, stat_name)).fetchone()
     str_id = str(pull_id).strip("(),")
     cursor.execute("UPDATE Stats SET player_id = ? WHERE name = ?", (str_id, str(stat_name)))
     connection.commit()
     c += 1
 
-# delete the counter columns
-cursor.execute("ALTER TABLE Players DROP COLUMN counter")
-connection.commit()
-cursor.execute("ALTER TABLE Stats DROP COLUMN counter")
-connection.commit()
+# TODO - delete the name column in Stats
+# cursor.execute("CREATE TABLE Stats_temp AS SELECT player_id, age_time_of_filming, hometown, season_id, finish, days_lasted, votes_against, tribal_wins, individual_wins, total_wins, jury_voter, final_contestant, sole_survivor, final_vote_id FROM Stats")
+# connection.commit()
+# cursor.execute("DROP Stats")
+# connection.commit()
+# cursor.execute("ALTER TABLE Stats_temp RENAME TO Stats")
+# connection.commit()
+#
+# cursor.execute("CREATE TABLE Players_temp AS SELECT id, name, dob, gender FROM Players")
+# connection.commit()
+# cursor.execute("DROP Players")
+# connection.commit()
+# cursor.execute("ALTER TABLE Players_temp RENAME TO Players")
+# connection.commit()
