@@ -11,7 +11,7 @@ def rowcount():
             return count
 
 # create db file
-connection = sqlite3.connect('test95.db')
+connection = sqlite3.connect('survivor.db')
 cursor = connection.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS "Players" (
     "id"	INTEGER,
