@@ -69,6 +69,89 @@
         </tbody>
     </table>
 </section>
+<section id="list-of-winners">
+<h2>Winners by Gender</h2>
+<hr>
+<h3>Women</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age (at time of filming)</th>
+            <th>Hometown</th>
+            <th>Season #</th>
+            <th>Season Name</th>
+            <th>Tribal Wins</th>
+            <th>Individual Wins</th>
+            <th>Total Wins</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in winclass.women_seasons() %}
+        <tr>
+            <td>{{ winclass.women_winners('Players', 'name', i) }}</td>
+            <td>{{ winclass.women_winners('Stats', 'age_time_of_filming', i) }} </td>
+            <td>{{ winclass.women_winners('Stats', 'hometown', i) }}</td>
+            <td>{{ i }}</td>
+            <td>{{ winclass.women_winners('Seasons', 'season', i) }}</td>
+            <td>{{ winclass.women_winners('Stats', 'tribal_wins', i) }}</td>
+            <td>{{ winclass.women_winners('Stats', 'individual_wins', i) }}</td>
+            <td>{{ winclass.women_winners('Stats', 'total_wins', i) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h3>Men</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age (at time of filming)</th>
+            <th>Hometown</th>
+            <th>Season #</th>
+            <th>Season Name</th>
+            <th>Tribal Wins</th>
+            <th>Individual Wins</th>
+            <th>Total Wins</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in winclass.men_seasons() %}
+        <tr>
+            <td>{{ winclass.men_winners('Players', 'name', i) }}</td>
+            <td>{{ winclass.men_winners('Stats', 'age_time_of_filming', i) }} </td>
+            <td>{{ winclass.men_winners('Stats', 'hometown', i) }}</td>
+            <td>{{ i }}</td>
+            <td>{{ winclass.men_winners('Seasons', 'season', i) }}</td>
+            <td>{{ winclass.men_winners('Stats', 'tribal_wins', i) }}</td>
+            <td>{{ winclass.men_winners('Stats', 'individual_wins', i) }}</td>
+            <td>{{ winclass.men_winners('Stats', 'total_wins', i) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h3>Breakdown</h3>
+<article>
+<div class="info" id="play-by-gen">
+<p>Women Players: {{ playerclass.num_women_players() }}</p>
+<p>Men Players: {{ playerclass.num_men_players() }}</p>
+<p>Non-binary Players: {{ playerclass.num_nb_players() }}</p>
+</div>
+<div class="pie">
+<img id="play-by-gen-pie" src="{{ url_for('static', filename='gender_pie_players_cropped.png') }}">
+</div>
+</article>
+<article>
+<div class="info" id="win-by-gen">
+<p>Women Winners: {{ winclass.num_women_winners() }}</p>
+<p>Men Winners: {{ winclass.num_men_winners() }}</p>
+<p>Non-Binary Winners: {{ winclass.num_nb_winners() }}</p>
+</div>
+<div class="pie">
+<img id="win-by-gen-pie" src="{{ url_for('static', filename='gender_pie_winners_cropped.png') }}">
+</div>
+</article>
+</section>
 <script>
     var $navbar = $('nav');
 $(document).scroll(function() {

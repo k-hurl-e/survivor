@@ -56,7 +56,7 @@ nav a:hover {
 }
 
 body {
-    background: linear-gradient(45deg, #2b5876, #4e4376);
+    background: linear-gradient(45deg, #2b5876, #4e4376, #50A7C2);
 }
 
 section {
@@ -111,6 +111,18 @@ tbody tr:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* tbody td {
-		position: relative;
-} */
+.pie {
+  width: 80%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.pie img {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.info {
+  display: inline-block;
+  vertical-align: middle;
+}
