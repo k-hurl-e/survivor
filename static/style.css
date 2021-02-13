@@ -1,6 +1,7 @@
 html {
     font-family: 'Lato', sans-serif;
     color: #fff;
+    scroll-behavior: smooth;
 }
 
 #logo {
