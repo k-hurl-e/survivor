@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Survivor">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <script
 			  src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -15,7 +15,7 @@
     <title>Survivor Data</title>
 </head>
 <header>
-    <img id="logo" src="{{ url_for('static', filename='survivordata.png') }}"> 
+    <img id="logo" src="{{ url_for('static', filename='survivordata.png') }}">
 </header>
 <body>
     <nav>
@@ -31,7 +31,7 @@
         <hr>
         <p>During lockdown 2020, I watched a lot of Survivor.</p>
         <p>I've created a database of player information pulled from the first 40 seasons of Survivor and crunched some numbers. Here are some of my findings.</p>
-        <p>The code to the project, as well as a more technical breakdown to how I did everything, plus the database can be found <a href="#">here</a>. If anyone wants to keep this project up to date as new seasons air, I've included information in the Github on how to do that.</p> 
+        <p>The code to the project, as well as a more technical breakdown to how I did everything, plus the database can be found <a href="#">here</a>. If anyone wants to keep this project up to date as new seasons air, I've included information in the Github on how to do that.</p>
         <h2>Acknowledgements</h2>
         <hr>
         <p>I started this database with data from <a href="https://survivor.fandom.com/wiki/Main_Page">Survivor Wiki</a>, and added addition information to it.</p>
@@ -56,45 +56,14 @@
         <tbody>
             {% for i in range(num_seasons) %}
             <tr>
-                <td>{{ list_winners(i) }}</td>
-                <td>{{ winner_age(i) }} </td>
-                <td>{{ winner_towns(i) }}</td>
+                <td>{{ winclass.list_winners(i) }}</td>
+                <td>{{ winclass.winner_age(i) }} </td>
+                <td>{{ winclass.winner_towns(i) }}</td>
                 <td>{{ (i + 1) }}</td>
-                <td>{{ season_list(i) }}</td>
-                <td>{{ tribal_wins(i) }}</td>
-                <td>{{ in_wins(i) }}</td>
-                <td>{{ total_wins(i) }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</section>
-<section>
-    <p>number 2</p>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Age (at time of filming)</th>
-                <th>Hometown</th>
-                <th>Season #</th>
-                <th>Season Name</th>
-                <th>Tribal Wins</th>
-                <th>Individual Wins</th>
-                <th>Total Wins</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for i in range(num_seasons) %}
-            <tr>
-                <td>{{ list_winners(i) }}</td>
-                <td>{{ winner_age(i) }} </td>
-                <td>{{ winner_towns(i) }}</td>
-                <td>{{ (i + 1) }}</td>
-                <td>{{ season_list(i) }}</td>
-                <td>{{ tribal_wins(i) }}</td>
-                <td>{{ in_wins(i) }}</td>
-                <td>{{ total_wins(i) }}</td>
+                <td>{{ winclass.season_list(i) }}</td>
+                <td>{{ winclass.tribal_wins(i) }}</td>
+                <td>{{ winclass.in_wins(i) }}</td>
+                <td>{{ winclass.total_wins(i) }}</td>
             </tr>
             {% endfor %}
         </tbody>

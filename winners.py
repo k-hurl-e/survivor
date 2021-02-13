@@ -49,3 +49,17 @@ class winclass:
             return 'No such user'
         else:
             return (tot_wins[0])
+
+    def men_winners(it):
+        tot_wins = query_db('SELECT total_wins FROM Stats WHERE sole_survivor = 1 AND season_id = ?', [(it + 1)], one=True)
+        if tot_wins is None:
+            return 'No such user'
+        else:
+            return (tot_wins[0])
+
+    def women_winners(it):
+        tot_wins = query_db('SELECT total_wins FROM Stats WHERE sole_survivor = 1 AND season_id = ?', [(it + 1)], one=True)
+        if tot_wins is None:
+            return 'No such user'
+        else:
+            return (tot_wins[0])
