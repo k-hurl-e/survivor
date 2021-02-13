@@ -1,6 +1,7 @@
 import sqlite3
-from query.queries import *
-from flask import Flask, render_template
+from flask import Flask, render_template, g
+from queries import query_db, get_db, DATABASE, num_seasons
+import winners
 
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ if __name__ == '__main__':
 
 @app.route("/")
 def home():
-    return render_template('home.html', num_seasons=num_seasons, list_winners=list_winners, winner_age=winner_age, winner_towns=winner_towns, season_list=season_list, tribal_wins=tribal_wins, in_wins=in_wins, total_wins=total_wins)
+    return render_template('home.html', num_seasons=num_seasons, list_winners=winners.winclass.list_winners, winner_age=winners.winclass.winner_age, winner_towns=winners.winclass.winner_towns, season_list=winners.winclass.season_list, tribal_wins=winners.winclass.tribal_wins, in_wins=winners.winclass.in_wins, total_wins=winners.winclass.total_wins)
 
 @app.teardown_appcontext
 def close_connection(exception):
