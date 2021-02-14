@@ -20,11 +20,18 @@
 <body>
     <nav>
         <a href="#">Top</a>
-        <a href="#">About</a>
+        <a href="#about">About</a>
+        <a id="new-sec" href="#list-of-winners">Winners:</a>
         <a href="#list-of-winners">List of Winners</a>
-        <a href="#">Winners by Gender</a>
-        <a href="#">Oldest Winners</a>
-        <a href="#">Youngest Winners</a>
+        <a href="#winners-by-gender">Winners by Gender</a>
+        <a href="#">Winners by Age</a>
+        <a href="#">Winners by Region</a>
+        <a id="new-sec" href="#unanimous-winners">Jury:</a>
+        <a href="#">Unanimous Winners</a>
+        <a href="#">Close Votes</a>
+        <a href="#">Votes by Gender</a>
+        <a id="new-sec" href="#list-of-winners">Players:</a>
+        <a href="#">Unanimous Winners</a>
     </nav>
     <section id="about">
         <h2>About</h2>
@@ -39,7 +46,7 @@
     <section id="list-of-winners">
     <h2>List of Survivor Winners</h2>
     <hr>
-    <p>A table of survivor winners in order of season.</p>
+    <p>A table of Survivor winners in order of season.</p>
     <table>
         <thead>
             <tr>
@@ -56,23 +63,20 @@
         <tbody>
             {% for i in range(num_seasons) %}
             <tr>
-                <td>{{ winclass.list_winners(i) }}</td>
-                <td>{{ winclass.winner_age(i) }} </td>
-                <td>{{ winclass.winner_towns(i) }}</td>
+                <td>{{ winclass.ask_winners('Stats', 'name', i) }}</td>
+                <td>{{ winclass.ask_winners('Stats', 'age_time_of_filming', i) }} </td>
+                <td>{{ winclass.ask_winners('Stats', 'hometown', i) }}</td>
                 <td>{{ (i + 1) }}</td>
-                <td>{{ winclass.season_list(i) }}</td>
-                <!-- <td>{{ winclass.tribal_wins(i) }}</td>
-                <td>{{ winclass.in_wins(i) }}</td>
-                <td>{{ winclass.total_wins(i) }}</td> -->
+                <td>{{ winclass.ask_winners('Seasons', 'season', i) }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </section>
-<section id="list-of-winners">
+<section id="winners-by-gender">
 <h2>Women Winners</h2>
 <hr>
-<p>A table of all the women survivor winners in order of season.</p>
+<p>A table of all the women Survivor winners in order of season, with basic challenge data.</p>
 <table>
     <thead>
         <tr>
@@ -103,7 +107,7 @@
 </table>
 <h2>Men Winners</h2>
 <hr>
-<p>A table of all the women survivor winners in order of season.</p>
+<p>A table of all the men Survivor winners in order of season, with basic challenge data.</p>
 <table>
     <thead>
         <tr>
@@ -139,7 +143,7 @@
 <p>Non-Binary Players: {{ playerclass.num_nb_players() }}</p>
 </div>
 <div class="pie">
-<img id="play-by-gen-pie" src="{{ url_for('static', filename='gender_pie_players_cropped.png') }}">
+<img src="{{ url_for('static', filename='gender_pie_players_cropped.png') }}">
 </div>
 </article>
 <article>
@@ -149,14 +153,86 @@
 <p>Non-Binary Winners: {{ winclass.num_nb_winners() }}</p>
 </div>
 <div class="pie">
-<img id="win-by-gen-pie" src="{{ url_for('static', filename='gender_pie_winners_cropped.png') }}">
+<img src="{{ url_for('static', filename='gender_pie_winners_cropped.png') }}">
+</div>
+</article>
+</section>
+<section id="winners-by-age">
+<h2>Oldest Winners</h2>
+<hr>
+<p>A table of the oldest the Survivor winners starting from oldest.</p>
+<p>If multiple people were the same age in years, then those tied will then be listed by season.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age (at time of filming)</th>
+            <th>Season #</th>
+            <th>Season Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in range(5) %}
+        <tr>
+            <td>{{ winclass.oldest_winners('Stats', 'name', 5, i) }}</td>
+            <td>{{ winclass.oldest_winners('Stats', 'age_time_of_filming', 5, i) }}</td>
+            <td>{{ winclass.oldest_winners('Seasons', 'id', 5, i) }}</td>
+            <td>{{ winclass.oldest_winners('Seasons', 'season', 5, i) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h2>Youngest Winners</h2>
+<hr>
+<p>A table of the youngest the Survivor winners starting from youngest.</p>
+<p>If multiple people were the same age in years, then those tied will then be listed by season.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age (at time of filming)</th>
+            <th>Season #</th>
+            <th>Season Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in range(5) %}
+        <tr>
+            <td>{{ winclass.youngest_winners('Stats', 'name', 5, i) }}</td>
+            <td>{{ winclass.youngest_winners('Stats', 'age_time_of_filming', 5, i) }}</td>
+            <td>{{ winclass.youngest_winners('Seasons', 'id', 5, i) }}</td>
+            <td>{{ winclass.youngest_winners('Seasons', 'season', 5, i) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<article>
+<div class="info" id="play-by-age">
+<p>20-29 Players: {{ playerclass.age_group_players(20, 29) }}</p>
+<p>30-39 Players: {{ playerclass.age_group_players(30, 39) }}</p>
+<p>40-49 Players: {{ playerclass.age_group_players(40, 49) }}</p>
+<p>50+ Players: {{ playerclass.age_group_players(50, 100) }}</p>
+</div>
+<div class="pie">
+<img src="{{ url_for('static', filename='age_pie_players_cropped.png') }}">
+</div>
+</article>
+<article>
+<div class="info" id="win-by-age">
+<p>20-29 Winners: {{ winclass.age_group_winners(20, 29) }}</p>
+<p>30-39 Winners: {{ winclass.age_group_winners(30, 39) }}</p>
+<p>40-49 Winners: {{ winclass.age_group_winners(40, 49) }}</p>
+<p>50+ Winners: {{ winclass.age_group_winners(50, 100) }}</p>
+</div>
+<div class="pie">
+<img src="{{ url_for('static', filename='age_pie_winners_cropped.png') }}">
 </div>
 </article>
 </section>
 <script>
     var $navbar = $('nav');
 $(document).scroll(function() {
-    $navbar.css({display: $(this).scrollTop() > 320? "block":"none"});
+    $navbar.css({display: $(this).scrollTop() > 300? "block":"none"});
 });
 </script>
 </body>

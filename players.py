@@ -45,3 +45,7 @@ class playerclass:
         for x in range(len(nb_players)):
             men_seasons_cleaned.append(nb_players[x][0])
         return len(nb_players_cleaned)
+
+    def age_group_players(low, high):
+        age_group = query_db("SELECT Stats.name FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.age_time_of_filming >= ? AND Stats.age_time_of_filming <= ? ORDER BY Stats.age_time_of_filming;", [low, high])
+        return len(age_group)
