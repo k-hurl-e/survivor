@@ -62,8 +62,6 @@ body {
 section {
     margin-left: 160px;
     margin-right: 160px;
-    /* Same as the width of the sidebar */
-    /* padding: 0px 160px 0 0; */
 }
 
 section a {
@@ -83,14 +81,10 @@ table {
     border-collapse: collapse;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    /* width: 80%;
-    border-collapse: collapse;
-    border: 1px solid black;
-    text-align: start; */
 }
 
 th, td {
-    padding: 15px;
+    padding: 10px 15px;
     background-color: rgba(255, 255, 255, 0.2);
     color: #fff;
 }
@@ -101,8 +95,7 @@ th {
 
 thead {
     background-color: #55608f;
-    position: -webkit-sticky;
-    /* Safari */
+    position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
 }
@@ -111,15 +104,14 @@ tbody tr:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-.pie {
-  width: 80%;
-  display: inline-block;
-  vertical-align: middle;
+article {
+  display: flex;
+  justify-content: center;
+  align-items: center
 }
 
 .pie img {
-  width: 60%;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .info {

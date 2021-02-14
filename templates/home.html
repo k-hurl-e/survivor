@@ -39,7 +39,7 @@
     <section id="list-of-winners">
     <h2>List of Survivor Winners</h2>
     <hr>
-    <p>A table of survivor winners in order of season, with basic challenge data.</p>
+    <p>A table of survivor winners in order of season.</p>
     <table>
         <thead>
             <tr>
@@ -48,9 +48,9 @@
                 <th>Hometown</th>
                 <th>Season #</th>
                 <th>Season Name</th>
-                <th>Tribal Wins</th>
+                <!-- <th>Tribal Wins</th>
                 <th>Individual Wins</th>
-                <th>Total Wins</th>
+                <th>Total Wins</th> -->
             </tr>
         </thead>
         <tbody>
@@ -61,24 +61,24 @@
                 <td>{{ winclass.winner_towns(i) }}</td>
                 <td>{{ (i + 1) }}</td>
                 <td>{{ winclass.season_list(i) }}</td>
-                <td>{{ winclass.tribal_wins(i) }}</td>
+                <!-- <td>{{ winclass.tribal_wins(i) }}</td>
                 <td>{{ winclass.in_wins(i) }}</td>
-                <td>{{ winclass.total_wins(i) }}</td>
+                <td>{{ winclass.total_wins(i) }}</td> -->
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </section>
 <section id="list-of-winners">
-<h2>Winners by Gender</h2>
+<h2>Women Winners</h2>
 <hr>
-<h3>Women</h3>
+<p>A table of all the women survivor winners in order of season.</p>
 <table>
     <thead>
         <tr>
             <th>Name</th>
-            <th>Age (at time of filming)</th>
-            <th>Hometown</th>
+            <!-- <th>Age (at time of filming)</th>
+            <th>Hometown</th> -->
             <th>Season #</th>
             <th>Season Name</th>
             <th>Tribal Wins</th>
@@ -90,8 +90,8 @@
         {% for i in winclass.women_seasons() %}
         <tr>
             <td>{{ winclass.women_winners('Players', 'name', i) }}</td>
-            <td>{{ winclass.women_winners('Stats', 'age_time_of_filming', i) }} </td>
-            <td>{{ winclass.women_winners('Stats', 'hometown', i) }}</td>
+            <!-- <td>{{ winclass.women_winners('Stats', 'age_time_of_filming', i) }} </td>
+            <td>{{ winclass.women_winners('Stats', 'hometown', i) }}</td> -->
             <td>{{ i }}</td>
             <td>{{ winclass.women_winners('Seasons', 'season', i) }}</td>
             <td>{{ winclass.women_winners('Stats', 'tribal_wins', i) }}</td>
@@ -101,7 +101,9 @@
         {% endfor %}
     </tbody>
 </table>
-<h3>Men</h3>
+<h2>Men Winners</h2>
+<hr>
+<p>A table of all the women survivor winners in order of season.</p>
 <table>
     <thead>
         <tr>
@@ -130,12 +132,11 @@
         {% endfor %}
     </tbody>
 </table>
-<h3>Breakdown</h3>
 <article>
 <div class="info" id="play-by-gen">
 <p>Women Players: {{ playerclass.num_women_players() }}</p>
 <p>Men Players: {{ playerclass.num_men_players() }}</p>
-<p>Non-binary Players: {{ playerclass.num_nb_players() }}</p>
+<p>Non-Binary Players: {{ playerclass.num_nb_players() }}</p>
 </div>
 <div class="pie">
 <img id="play-by-gen-pie" src="{{ url_for('static', filename='gender_pie_players_cropped.png') }}">
@@ -155,7 +156,7 @@
 <script>
     var $navbar = $('nav');
 $(document).scroll(function() {
-    $navbar.css({display: $(this).scrollTop() > 330? "block":"none"});
+    $navbar.css({display: $(this).scrollTop() > 320? "block":"none"});
 });
 </script>
 </body>
