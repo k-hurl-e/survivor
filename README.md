@@ -7,7 +7,7 @@ Flask app that displays data from the first 40 seasons of Survivor queried from 
 ## About
 
 ## Acknowledgments
-I started this database with data from [Survivor Wiki](https://survivor.fandom.com/wiki/Main_Page), and added addition information to it.
+I started this database with data from [Survivor Wiki](https://survivor.fandom.com/wiki/Main_Page), and added additional information to it.
 
 ## Contribute
 If anyone is interested in keeping this project going, I've tried to design the site to be easily adaptable to new information. If someone simply wants to add new players and seasons to the existing columns, you can do that by cloning this repository and then updating the `survivor.db` file either through entering new queries or editing the `Survivor_Contestants.xlsx` file, deleting the current `survivor.db` file, and then running the `excel2sql.py` file. ***Note that this will only work with an `.xlsx` file.***
