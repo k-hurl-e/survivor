@@ -264,6 +264,35 @@ $(document).scroll(function() {
     $navbar.css({display: $(this).scrollTop() > 300? "block":"none"});
 });
 </script>
+<section>
+    <h2>Unanimous Winners</h2>
+<hr>
+<p>A table of all the winners who were unanimously voted the winner in the final tribal council.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Season #</th>
+            <th>Season Name</th>
+            <th>Tribal Wins</th>
+            <th>Individual Wins</th>
+            <th>Total Wins</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in juryclass.unanimous_seasons() %}
+        <tr>
+            <td>{{ juryclass.unanimous_winner('Players', 'name', i) }}</td>
+            <td>{{ i }}</td>
+            <td>{{ juryclass.unanimous_winner('Seasons', 'season', i) }}</td>
+            <td>{{ juryclass.unanimous_winner('Stats', 'tribal_wins', i) }}</td>
+            <td>{{ juryclass.unanimous_winner('Stats', 'individual_wins', i) }}</td>
+            <td>{{ juryclass.unanimous_winner('Stats', 'total_wins', i) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</section>
 </body>
 
 </html>
