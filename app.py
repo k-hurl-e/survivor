@@ -4,6 +4,7 @@ from queries import query_db, get_db, DATABASE, num_seasons
 import visuals
 import winners
 import players
+import jury
 
 app = Flask(__name__)
 
@@ -27,7 +28,8 @@ def home():
     return render_template('home.html',
     num_seasons=num_seasons,
     winclass=winners.winclass,
-    playerclass=players.playerclass)
+    playerclass=players.playerclass,
+    juryclass=jury.juryclass)
 
 @app.teardown_appcontext
 def close_connection(exception):
