@@ -41,24 +41,13 @@ nav #new-sec{
   /* font-weight: bold; */
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-    .sidenav a {
-        font-size: 18px;
-    }
-}
-
 body {
     background: linear-gradient(45deg, #8F4311, #E09D00, #A1BE37, #50A7C2, #2b5876, #4e4376, #50A7C2);
 }
 
 section {
     margin-left: 160px;
-    margin-right: 160px;
+    margin-right: 80px;
 }
 
 section a {
@@ -75,6 +64,7 @@ hr {
 
 table {
     width: 100%;
+    min-width: 742px;
     border-collapse: collapse;
     overflow: hidden;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
@@ -105,6 +95,10 @@ tbody tr:hover {
 
 article {
   display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   justify-content: center; /* horizontal aligns text */
   align-items: center; /* vertical aligns text */
 }
@@ -129,4 +123,21 @@ p + article {
     color: rgba(255, 255, 255, 0.6);
 }
 
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 
+@media screen and (max-width: 1080px) {
+    margin-right: 80px;
+}
+
+@media screen and (max-width: 920px) {
+    
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
