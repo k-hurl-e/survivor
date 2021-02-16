@@ -24,8 +24,8 @@
         <a id="new-sec" href="#list-of-winners">Winners:</a>
         <a href="#list-of-winners">List of Winners</a>
         <a href="#winners-by-gender">Winners by Gender</a>
-        <a href="#">Winners by Age</a>
-        <a href="#">Winners by Region</a>
+        <a href="#winners-by-age">Winners by Age</a>
+        <a href="#winners-by-region">Winners by Region</a>
         <a id="new-sec" href="#unanimous-winners">Jury:</a>
         <a href="#">Unanimous Winners</a>
         <a href="#">Close Votes</a>
@@ -55,9 +55,6 @@
                 <th>Hometown</th>
                 <th>Season #</th>
                 <th>Season Name</th>
-                <!-- <th>Tribal Wins</th>
-                <th>Individual Wins</th>
-                <th>Total Wins</th> -->
             </tr>
         </thead>
         <tbody>
@@ -81,8 +78,6 @@
     <thead>
         <tr>
             <th>Name</th>
-            <!-- <th>Age (at time of filming)</th>
-            <th>Hometown</th> -->
             <th>Season #</th>
             <th>Season Name</th>
             <th>Tribal Wins</th>
@@ -94,8 +89,6 @@
         {% for i in winclass.women_seasons() %}
         <tr>
             <td>{{ winclass.women_winners('Players', 'name', i) }}</td>
-            <!-- <td>{{ winclass.women_winners('Stats', 'age_time_of_filming', i) }} </td>
-            <td>{{ winclass.women_winners('Stats', 'hometown', i) }}</td> -->
             <td>{{ i }}</td>
             <td>{{ winclass.women_winners('Seasons', 'season', i) }}</td>
             <td>{{ winclass.women_winners('Stats', 'tribal_wins', i) }}</td>
@@ -229,6 +222,42 @@
 </div>
 </article>
 </section>
+<section id="winners-by-region">
+    <h2>Winners by Region</h2>
+    <hr>
+    <p>A breakdown of survivor players and where they were living at the time of filming.</p>
+    <article>
+    <div class="info" id="play-by-region">
+    <p>Southern Players: {{ playerclass.num_southern_players() }}</p>
+    <p>Mid-Atlantic Players: {{ playerclass.num_midatlantic_players() }}</p>
+    <p>New England Players: {{ playerclass.num_newengland_players() }}</p>
+    <p>Western Players: {{ playerclass.num_western_players() }}</p>
+    <p>Midwest Players: {{ playerclass.num_midwest_players() }}</p>
+    </div>
+    <div class="pie">
+    <img src="{{ url_for('static', filename='region_pie_players_cropped.png') }}">
+    </div>
+    </article>
+    <article>
+    <div class="info" id="win-by-region">
+        <p>Southern Winners: {{ winclass.num_southern_winners() }}</p>
+        <p>Mid-Atlantic Winners: {{ winclass.num_midatlantic_winners() }}</p>
+        <p>New England Winners: {{ winclass.num_newengland_winners() }}</p>
+        <p>Western Winners: {{ winclass.num_western_winners() }}</p>
+        <p>Midwest Winners: {{ winclass.num_midwest_winners() }}</p>
+    </div>
+    <div class="pie">
+    <img src="{{ url_for('static', filename='region_pie_winners_cropped.png') }}">
+    </div>
+    </article>
+    <div class="clarify">
+        <p>Southern: TX, OK, LA, AR, MS, AL, GA, TN, KY, FL, SC, NC
+        Mid-Atlantic: VA, WV, MD, DE, PA, NY, NJ
+        New England: MA, CT, RI, NH, VT, ME
+        Western: NM, CO, WY, MT, AZ, UT, ID, CA, NV, OR, WA
+        North West: OH, MI, IN, IL, WI, MO, IA, MN, KS, NE, SD, ND</p>
+    </div>
+    </section>
 <script>
     var $navbar = $('nav');
 $(document).scroll(function() {

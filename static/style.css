@@ -1,5 +1,6 @@
 html {
     font-family: 'Lato', sans-serif;
+    font-weight: 500;
     color: #fff;
     scroll-behavior: smooth;
 }
@@ -52,7 +53,7 @@ nav #new-sec{
 }
 
 body {
-    background: linear-gradient(45deg, #2b5876, #4e4376, #50A7C2);
+    background: linear-gradient(45deg, #8F4311, #E09D00, #A1BE37, #50A7C2, #2b5876, #4e4376, #50A7C2);
 }
 
 section {
@@ -76,14 +77,15 @@ table {
     width: 100%;
     border-collapse: collapse;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
     margin-bottom: 100px;
+    border-radius: 10px;
 }
 
 th, td {
     padding: 10px 15px;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(232, 231, 255);
 }
 
 th {
@@ -98,20 +100,26 @@ thead {
 }
 
 tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(87, 86, 173, 0.3);
 }
 
 article {
   display: flex;
-  justify-content: center;
-  align-items: center
+  justify-content: center; /* horizontal aligns text */
+  align-items: center; /* vertical aligns text */
 }
 
 .pie img {
-  width: 100%;
+  width: 500px;
 }
 
 .info {
   display: inline-block;
-  vertical-align: middle;
+  /* vertical-align: middle; */
+  width: auto;
+}
+
+.clarify {
+    font-size: 10pt;
+    color: rgba(255, 255, 255, 0.6);
 }
