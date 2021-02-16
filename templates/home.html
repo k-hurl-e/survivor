@@ -27,7 +27,7 @@
         <a href="#winners-by-age">Winners by Age</a>
         <a href="#winners-by-region">Winners by Region</a>
         <a id="new-sec" href="#unanimous-winners">Jury:</a>
-        <a href="#">Unanimous Winners</a>
+        <a href="#unanimous-winners">Unanimous Winners</a>
         <a href="#">Close Votes</a>
         <a href="#">Votes by Gender</a>
         <a id="new-sec" href="#list-of-winners">Players:</a>
@@ -258,14 +258,8 @@
         North West: OH, MI, IN, IL, WI, MO, IA, MN, KS, NE, SD, ND</p>
     </div>
     </section>
-<script>
-    var $navbar = $('nav');
-$(document).scroll(function() {
-    $navbar.css({display: $(this).scrollTop() > 300? "block":"none"});
-});
-</script>
-<section>
-    <h2>Unanimous Winners</h2>
+<section id="unanimous-winners">
+<h2>Unanimous Winners</h2>
 <hr>
 <p>A table of all the winners who were unanimously voted the winner in the final tribal council.</p>
 <table>
@@ -293,6 +287,12 @@ $(document).scroll(function() {
     </tbody>
 </table>
 </section>
+<script>
+    var $navbar = $('nav');
+$(document).scroll(function() {
+    $navbar.css({display: $(this).scrollTop() > 300? "block":"none"});
+});
+</script>
 </body>
 
 </html>
