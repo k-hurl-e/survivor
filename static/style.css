@@ -109,8 +109,13 @@ article {
   align-items: center; /* vertical aligns text */
 }
 
+p + article {
+    margin-top: 40px;
+}
+
 .pie img {
   width: 500px;
+  margin-bottom: 40px;
 }
 
 .info {
@@ -123,3 +128,5 @@ article {
     font-size: 10pt;
     color: rgba(255, 255, 255, 0.6);
 }
+
+

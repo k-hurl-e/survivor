@@ -135,18 +135,3 @@ while c <= list_length:
     cursor.execute("UPDATE Stats SET player_id = ? WHERE name = ?", (str_id, str(stat_name)))
     connection.commit()
     c += 1
-
-# TODO - delete the name column in Stats
-# cursor.execute("CREATE TABLE Stats_temp AS SELECT player_id, age_time_of_filming, hometown, season_id, finish, days_lasted, votes_against, tribal_wins, individual_wins, total_wins, jury_voter, final_contestant, sole_survivor, final_vote_id FROM Stats")
-# connection.commit()
-# cursor.execute("DROP Stats")
-# connection.commit()
-# cursor.execute("ALTER TABLE Stats_temp RENAME TO Stats")
-# connection.commit()
-#
-# cursor.execute("CREATE TABLE Players_temp AS SELECT id, name, dob, gender FROM Players")
-# connection.commit()
-# cursor.execute("DROP Players")
-# connection.commit()
-# cursor.execute("ALTER TABLE Players_temp RENAME TO Players")
-# connection.commit()
