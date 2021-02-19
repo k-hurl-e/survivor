@@ -28,7 +28,7 @@ header #logo {
   #NAV
 \* ---------------------- */
 
-nav {
+nav .desktop-nav {
     display: none;
     position: fixed;
     height: 100%; /* Full-height: remove this if you want "auto" height */
@@ -40,7 +40,7 @@ nav {
     padding-top: 20px;
 }
 
-nav a {
+nav .desktop-nav a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 10pt;
@@ -48,11 +48,11 @@ nav a {
     display: block;
 }
 
-nav a:hover {
+nav .desktop-nav a:hover {
     color: #fff;
 }
 
-nav #new-sec{
+nav .desktop-nav #new-sec{
   text-decoration: underline;
   /* font-weight: bold; */
 }
