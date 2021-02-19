@@ -1,3 +1,7 @@
+/* ---------------------- *\
+  #HTML / BODY
+\* ---------------------- */
+
 html {
     font-family: 'Lato', sans-serif;
     font-weight: 500;
@@ -5,12 +9,24 @@ html {
     scroll-behavior: smooth;
 }
 
-#logo {
-    width: 500px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+body {
+  background: linear-gradient(45deg, #8F4311, #E09D00, #A1BE37, #50A7C2, #2b5876, #4e4376, #50A7C2);
 }
+
+/* ---------------------- *\
+  #HEADER
+\* ---------------------- */
+
+header #logo {
+  width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------------------- *\
+  #NAV
+\* ---------------------- */
 
 nav {
     display: none;
@@ -41,9 +57,9 @@ nav #new-sec{
   /* font-weight: bold; */
 }
 
-body {
-    background: linear-gradient(45deg, #8F4311, #E09D00, #A1BE37, #50A7C2, #2b5876, #4e4376, #50A7C2);
-}
+/* ---------------------- *\
+  #MAIN
+\* ---------------------- */
 
 section {
     margin-left: 160px;
@@ -93,6 +109,10 @@ tbody tr:hover {
     background-color: rgba(87, 86, 173, 0.3);
 }
 
+/* ---------------------- *\
+  #PIE-CHART-ARTICLES
+\* ---------------------- */
+
 article {
   display: flex;
   display: -webkit-box;
@@ -123,7 +143,9 @@ p + article {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+/* ---------------------- *\
+  #MEDIA-QUERIES
+\* ---------------------- */
 
 @media screen and (max-width: 1080px) {
     margin-right: 80px;
