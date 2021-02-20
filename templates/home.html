@@ -126,6 +126,7 @@
         {% endfor %}
     </tbody>
 </table>
+<h3>Players</h3>
 <article>
 <div class="info" id="play-by-gen">
 <p>Women Players: {{ playerclass.num_women_players() }}</p>
@@ -136,6 +137,7 @@
 <img src="{{ url_for('static', filename='gender_pie_players_cropped.png') }}">
 </div>
 </article>
+<h3>Winners</h3>
 <article>
 <div class="info" id="win-by-gen">
 <p>Women Winners: {{ winclass.num_women_winners() }}</p>
@@ -194,6 +196,7 @@
         {% endfor %}
     </tbody>
 </table>
+<h3>Players</h3>
 <article>
 <div class="info" id="play-by-age">
 <p>20-29 Players: {{ playerclass.age_group_players(20, 29) }}</p>
@@ -205,6 +208,7 @@
 <img src="{{ url_for('static', filename='age_pie_players_cropped.png') }}">
 </div>
 </article>
+<h3>Winners</h3>
 <article>
 <div class="info" id="win-by-age">
 <p>20-29 Winners: {{ winclass.age_group_winners(20, 29) }}</p>
@@ -220,6 +224,7 @@
 <section id="winners-by-region">
     <h2>Winners by Region</h2>
     <p>A breakdown of survivor players and where they were living at the time of filming.</p>
+    <h3>Players</h3>
     <article>
     <div class="info" id="play-by-region">
     <p>Southern Players: {{ playerclass.num_southern_players() }}</p>
@@ -232,6 +237,7 @@
     <img src="{{ url_for('static', filename='region_pie_players_cropped.png') }}">
     </div>
     </article>
+    <h3>Winners</h3>
     <article>
     <div class="info" id="win-by-region">
         <p>Southern Winners: {{ winclass.num_southern_winners() }}</p>
