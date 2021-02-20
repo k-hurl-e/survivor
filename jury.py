@@ -48,6 +48,7 @@ class juryclass:
                         votes[n] += 1
             for final in votes.values():
                 vote_list.append(final)
+            vote_list.sort()
             final_count = vote_list[0]
             for vote in vote_list[1:]:
                 final_count -= vote
