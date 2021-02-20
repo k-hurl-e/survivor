@@ -36,7 +36,7 @@
     </nav>
     <section id="about">
         <h2>About</h2>     
-        <p>During lockdown 2020, I watched a lot of Survivor.</p>
+        <p>{{ juryclass.make_vote_dict() }} During lockdown 2020, I watched a lot of Survivor.</p>
         <p>I've created a database of player information pulled from the first 40 seasons of Survivor and crunched some numbers. </p>
         <p>The code to the project, as well as a more technical breakdown to how I did everything, plus the database can be found <a href="#">here</a>. If anyone wants to keep this project up to date as new seasons air, I've included information in the Github on how to do that.</p>
         <h2>Acknowledgements</h2>
@@ -288,7 +288,7 @@
 </section>
 <section id="close-votes">
     <h2>Close Votes</h2>
-    <p>A table of all the winners who were unanimously voted the winner in the final tribal council.</p>
+    <p>Below are the closest seasons in terms of the final tribal council vote. In this case close is defined as the winner only winning by a single vote.</p>
     {% for i in juryclass.close_votes_seasons() %}
     <h3>Season {{ i }} - {{ juryclass.close_season_contestants('Seasons', 'season', i, 0) }}</h3>
     <table>

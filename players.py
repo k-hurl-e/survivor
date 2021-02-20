@@ -99,3 +99,10 @@ class playerclass:
         #12 states
         players = query_db("SELECT Stats.name FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE (Stats.hometown LIKE '%, OH' OR Stats.hometown LIKE '%, MI'  OR Stats.hometown LIKE '%, IN'  OR Stats.hometown LIKE '%, IL' OR Stats.hometown LIKE '%, WI' OR Stats.hometown LIKE '%, MO' OR Stats.hometown LIKE '%, IA' OR Stats.hometown LIKE '%, MN' OR Stats.hometown LIKE '%, KS' OR Stats.hometown LIKE '%, NE' OR Stats.hometown LIKE '%, SD' OR Stats.hometown LIKE '%, ND');")
         return len(players)
+
+    def all_player_ids():
+        players = query_db("SELECT Stats.player_id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id;")
+        clean_player_list = []
+        for item in players:
+            clean_player_list.append(item[0])
+        return clean_player_list
