@@ -66,12 +66,6 @@ class juryclass:
         return finalist[it][0]
 
 
-        #function that prints how many final contestants there are in a season - num_finalists(season)
-        # function that take tab;e, column, season, and it to print info on final contestants
-        #in html 2 for loops, outer loop with no html that loops through seasons (for i in close_seasons)
-        #inner loops has the tr th tr, tr td tr structure and loops through finalists in that season (for x in range(num_finalists(i))) - close_season_contestants(table, column, i, x))
-
-
 
 
     

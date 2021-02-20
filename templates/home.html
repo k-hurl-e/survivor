@@ -35,18 +35,16 @@
         <a href="#">Unanimous Winners</a>
     </nav>
     <section id="about">
-        <h2>About</h2>
-        <hr>
+        <h2>About</h2>     
         <p>During lockdown 2020, I watched a lot of Survivor.</p>
         <p>I've created a database of player information pulled from the first 40 seasons of Survivor and crunched some numbers. </p>
         <p>The code to the project, as well as a more technical breakdown to how I did everything, plus the database can be found <a href="#">here</a>. If anyone wants to keep this project up to date as new seasons air, I've included information in the Github on how to do that.</p>
         <h2>Acknowledgements</h2>
-        <hr>
+        
         <p>I started this database with data from <a href="https://survivor.fandom.com/wiki/Main_Page">Survivor Wiki</a>, and added addition information to it.</p>
     </section>
     <section id="list-of-winners">
-    <h2>List of Survivor Winners</h2>
-    <hr>
+    <h2>List of Survivor Winners</h2>   
     <p>A table of Survivor winners in order of season.</p>
     <table>
         <thead>
@@ -73,7 +71,6 @@
 </section>
 <section id="winners-by-gender">
 <h2>Women Winners</h2>
-<hr>
 <p>A table of all the women Survivor winners in order of season, with basic challenge data.</p>
 <table>
     <thead>
@@ -100,7 +97,6 @@
     </tbody>
 </table>
 <h2>Men Winners</h2>
-<hr>
 <p>A table of all the men Survivor winners in order of season, with basic challenge data.</p>
 <table id="mentable">
     <thead>
@@ -153,7 +149,6 @@
 </section>
 <section id="winners-by-age">
 <h2>Oldest Winners</h2>
-<hr>
 <p>A table of the oldest the Survivor winners starting from oldest.</p>
 <p>If multiple people were the same age in years, then those tied will then be listed by season.</p>
 <table>
@@ -177,7 +172,6 @@
     </tbody>
 </table>
 <h2>Youngest Winners</h2>
-<hr>
 <p>A table of the youngest the Survivor winners starting from youngest.</p>
 <p>If multiple people were the same age in years, then those tied will then be listed by season.</p>
 <table>
@@ -225,7 +219,6 @@
 </section>
 <section id="winners-by-region">
     <h2>Winners by Region</h2>
-    <hr>
     <p>A breakdown of survivor players and where they were living at the time of filming.</p>
     <article>
     <div class="info" id="play-by-region">
@@ -261,7 +254,6 @@
     </section>
 <section id="unanimous-winners">
 <h2>Unanimous Winners</h2>
-<hr>
 <p>A table of all the winners who were unanimously voted the winner in the final tribal council.</p>
 <table>
     <thead>
@@ -290,7 +282,6 @@
 </section>
 <section id="close-votes">
     <h2>Close Votes</h2>
-    <hr>
     <p>A table of all the winners who were unanimously voted the winner in the final tribal council.</p>
     {% for i in juryclass.close_votes_seasons() %}
     <h3>Season {{ i }} - {{ juryclass.close_season_contestants('Seasons', 'season', i, 0) }}</h3>
