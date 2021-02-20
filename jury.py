@@ -65,7 +65,30 @@ class juryclass:
         finalist = query_db(f"SELECT {table}.{column} FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.final_contestant = 1 AND Stats.season_id = ?;", [season_num])
         return finalist[it][0]
 
+    def tally_votes(season, it, lst):
+        season_num = season
+        check_list = [] # who got votes
+        clean_list = [] # cleaned list of votes
+        votes = {} # dictionary that will track the votes
+        vote_list = [] # values of votes
+        season_votes = query_db("SELECT Stats.final_vote_id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.season_id = ?;", [season_num])
+        for x in range(4):
+            for v in season_votes:
+                if v[0] == None:
+                    season_votes.remove(v)
+        for d in season_votes:
+            if d[0] not in check_list:
+                check_list.append(d[0])
+        for y in season_votes:
+            clean_list.append(y[0])
+        for t in check_list:
+            votes[t] = 0
+        for n in check_list:
+            for m in clean_list:
+                if m == n:
+                    votes[n] += 1
+        value = list(map(itemgetter(it), votes)) 
+        return value
 
 
 
-    

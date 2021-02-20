@@ -41,7 +41,7 @@
         <p>The code to the project, as well as a more technical breakdown to how I did everything, plus the database can be found <a href="#">here</a>. If anyone wants to keep this project up to date as new seasons air, I've included information in the Github on how to do that.</p>
         <h2>Acknowledgements</h2>
         
-        <p>I started this database with data from <a href="https://survivor.fandom.com/wiki/Main_Page">Survivor Wiki</a>, and added addition information to it.</p>
+        <p>I started this database with data from <a href="https://survivor.fandom.com/wiki/Main_Page">Survivor Wiki</a>, and added additional information to it.</p>
     </section>
     <section id="list-of-winners">
     <h2>List of Survivor Winners</h2>   
@@ -302,7 +302,7 @@
             {% for x in range(juryclass.num_finalists(i)) %}
             <tr>
                 <td>{{ juryclass.close_season_contestants('Players', 'name', i, x) }}</td>
-                <td>{{ juryclass.close_season_contestants('Stats', 'individual_wins', i, x) }}</td>
+                <td>{{ juryclass.tally_votes(i, x, juryclass.close_votes_seasons()) }}</td>
             </tr>
             {% endfor %}
         </tbody>
