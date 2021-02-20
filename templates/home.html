@@ -288,6 +288,33 @@
     </tbody>
 </table>
 </section>
+<section id="close-votes">
+    <h2>Close Votes</h2>
+    <hr>
+    <p>A table of all the winners who were unanimously voted the winner in the final tribal council.</p>
+    {% for i in juryclass.close_votes_seasons() %}
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Season #</th>
+                <th>Season Name</th>
+                <th>Votes For</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in range(juryclass.num_finalists(i)) %}
+            <tr>
+                <td>{{ juryclass.close_season_contestants('Players', 'name', i, x) }}</td>
+                <td>{{ i }}</td>
+                <td>{{ juryclass.close_season_contestants('Seasons', 'season', i, x) }}</td>
+                <td>{{ juryclass.close_season_contestants('Stats', 'individual_wins', i, x) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+    </section>
 </main>
 <script>
     var $navbar = $('nav');

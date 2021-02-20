@@ -55,6 +55,17 @@ class juryclass:
                 close_seasons.append(season_num) 
         return close_seasons
 
+    def num_finalists(season):
+        season_num = season
+        finalists = query_db("SELECT Stats.name FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.final_contestant = 1 AND Stats.season_id = ?;", [season_num])
+        return len(finalists)
+
+    def close_season_contestants(table, column, season, it):
+        season_num = season
+        finalist = query_db(f"SELECT {table}.{column} FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.final_contestant = 1 AND Stats.season_id = ?;", [season_num])
+        return finalist[it][0]
+
+
         #function that prints how many final contestants there are in a season - num_finalists(season)
         # function that take tab;e, column, season, and it to print info on final contestants
         #in html 2 for loops, outer loop with no html that loops through seasons (for i in close_seasons)
