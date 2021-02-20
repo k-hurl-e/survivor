@@ -49,8 +49,8 @@ class juryclass:
             for final in votes.values():
                 vote_list.append(final)
             final_count = vote_list[0]
-            for votes in vote_list[1:]:
-                final_count -= votes
+            for vote in vote_list[1:]:
+                final_count -= vote
             if final_count > -2 and final_count < 2:
                 close_seasons.append(season_num) 
         return close_seasons
@@ -86,9 +86,14 @@ class juryclass:
         for n in check_list:
             for m in clean_list:
                 if m == n:
-                    votes[n] += 1
-        value = list(map(itemgetter(it), votes)) 
-        return value
+                    votes[n] += 1 
+        finalist = query_db("SELECT Stats.player_id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.final_contestant = 1 AND Stats.season_id = ?;", [season_num])
+        id = finalist[it][0]
+        players_votes = votes.get(id)
+        if players_votes == None:
+            return 0
+        else: 
+            return players_votes
 
 
 
