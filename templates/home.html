@@ -17,6 +17,7 @@
 <header>
     <img id="logo" src="{{ url_for('static', filename='survivordata.png') }}">
 </header>
+<main>
 <body>
     <nav class="desktop-nav">
         <a href="#">Top</a>
@@ -33,7 +34,6 @@
         <a id="new-sec" href="#list-of-winners">Players:</a>
         <a href="#">Unanimous Winners</a>
     </nav>
-    <main>
     <section id="about">
         <h2>About</h2>
         <hr>
@@ -293,21 +293,18 @@
     <hr>
     <p>A table of all the winners who were unanimously voted the winner in the final tribal council.</p>
     {% for i in juryclass.close_votes_seasons() %}
+    <h3>Season {{ i }} - {{ juryclass.close_season_contestants('Seasons', 'season', i, 0) }}</h3>
     <table>
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Season #</th>
-                <th>Season Name</th>
-                <th>Votes For</th>
+                <th>Votes</th>
             </tr>
         </thead>
         <tbody>
             {% for x in range(juryclass.num_finalists(i)) %}
             <tr>
                 <td>{{ juryclass.close_season_contestants('Players', 'name', i, x) }}</td>
-                <td>{{ i }}</td>
-                <td>{{ juryclass.close_season_contestants('Seasons', 'season', i, x) }}</td>
                 <td>{{ juryclass.close_season_contestants('Stats', 'individual_wins', i, x) }}</td>
             </tr>
             {% endfor %}
