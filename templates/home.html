@@ -36,7 +36,7 @@
     </nav>
     <section id="about">
         <h2>About</h2>     
-        <p>{{ juryclass.make_vote_dict() }} During lockdown 2020, I watched a lot of Survivor.</p>
+        <p>{{ juryclass.gender_votes((juryclass.make_vote_dict()), 'm4m') }} {{ juryclass.num_jury((juryclass.make_vote_dict())) }}During lockdown 2020, I watched a lot of Survivor.</p>
         <p>I've created a database of player information pulled from the first 40 seasons of Survivor and crunched some numbers. </p>
         <p>The code to the project, as well as a more technical breakdown to how I did everything, plus the database can be found <a href="#">here</a>. If anyone wants to keep this project up to date as new seasons air, I've included information in the Github on how to do that.</p>
         <h2>Acknowledgements</h2>

@@ -130,28 +130,40 @@ class juryclass:
             voters[unique_id] = {'name': name[0][0], 'gender': gender[0][0], 'vote_cast_for_id': vcf_clean, 'vote_cast_for_name': vcf_name[0][0], 'vote_cast_for_gender': vcf_gender[0][0]}
         return voters
 
+    def gender_votes(diction, condition):
+        def counter(gen, vcf_gen, dic):
+            tally = 0
+            for key in dic:
+                if dic[key].get('gender') == gen and dic[key].get('vote_cast_for_gender') == vcf_gen:
+                    tally += 1
+            return tally
+        if condition == 'm4m':
+            m4m_votes = counter('M', 'M', diction)
+            return m4m_votes
+        if condition == 'm4w':
+            m4w_votes = counter('M', 'W', diction)
+            return m4w_votes
+        if condition == 'm4nb':
+            m4nb_votes = counter('M', 'NB', diction)
+            return m4nb_votes
+        if condition == 'w4w':
+            w4w_votes = counter('W', 'W', diction)
+            return w4w_votes
+        if condition == 'w4m':
+            w4m_votes = counter('W', 'M', diction)
+            return w4w_votes
+        if condition == 'w4nb':
+            w4nb_votes = counter('W', 'NB', diction)
+            return w4nb_votes
+        if condition == 'nb4nb':
+            nb4nb_votes = counter('NB', 'NB', diction)
+            return nb4nb_votes
+        if condition == 'nb4w':
+            nb4w_votes = counter('NB', 'W', diction)
+            return nb4w_votes
+        if condition == 'nb4m':
+            nb4m_votes = counter('NB', 'M', diction)
+            return nb4m_votes
 
-        # season = 0
-        # inc = 1
-        # for cont in clean_player_list:
-        #     unique_id = cont
-        #     move = 0
-        #     if unique_id in voters:
-        #         unique_id += unique
-        #         unique += 10000
-        #         move += inc
-        #         inc += 1
-        #     season_check = query_db("SELECT Seasons.id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ?;", [cont])
-            # if season_check[move][0] > season:
-            #     season += 1
-            # name = query_db("SELECT Stats.name FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [cont, season])
-            # gender = query_db("SELECT Players.gender FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [cont, season])
-            # vcf = query_db("SELECT Stats.final_vote_id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [cont, season])
-            # vcf_clean = vcf
-            # vcf_name = query_db("SELECT Stats.name FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [vcf_clean, season])
-            # vcf_gender = query_db("SELECT Players.gender FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [vcf_clean, season])
-            # voters[unique_id] = {'name': name[0][0], 'gender': gender[0][0], 'vote_cast_for_id': vcf_clean, 'vote_cast_for_name': vcf_name, 'vote_cast_for_gender': vcf_gender}
-
-
-
-
+    def num_jury(diction):
+        return len(diction)
