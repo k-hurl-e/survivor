@@ -167,3 +167,10 @@ class juryclass:
 
     def num_jury(diction):
         return len(diction)
+    
+    def gender_jury(diction, gen):
+        tally = 0
+        for key in diction:
+            if diction[key].get('gender') == gen:
+                tally += 1
+        return tally

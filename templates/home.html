@@ -29,8 +29,8 @@
         <a href="#winners-by-region">Winners by Region</a>
         <a id="new-sec" href="#unanimous-winners">Jury:</a>
         <a href="#unanimous-winners">Unanimous Winners</a>
-        <a href="#">Close Votes</a>
-        <a href="#">Votes by Gender</a>
+        <a href="#close-votes">Close Votes</a>
+        <a href="#votes-by-gender">Votes by Gender</a>
         <a id="new-sec" href="#list-of-winners">Players:</a>
         <a href="#">Unanimous Winners</a>
     </nav>
@@ -312,6 +312,16 @@
     <section id="votes-by-gender">
         <h2>Jury Votes by Gender</h2>
 <p>A look at how jury members voted based on gender.</p>
+<h3>All Jury Members</h3>
+<article>
+<div class="info" id="women-votes">
+<p>Women jury members: {{ juryclass.gender_jury((juryclass.make_vote_dict()), 'W') }}</p>
+<p>Men jury members: {{ juryclass.gender_jury((juryclass.make_vote_dict()), 'M') }}</p>
+<p>Non-binary jury members: {{ juryclass.gender_jury((juryclass.make_vote_dict()), 'NB') }}</p>
+</div>
+<div class="pie">
+<img src="{{ url_for('static', filename='gender_pie_jury_alljury_cropped.png') }}">
+</div>
 </article>
 <h3>Women</h3>
 <article>
@@ -334,6 +344,7 @@
 <div class="pie">
 <img src="{{ url_for('static', filename='gender_pie_jury_men_cropped.png') }}">
 </div>
+</article>
     </section>
 </main>
 <script>
