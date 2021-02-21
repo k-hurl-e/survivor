@@ -36,7 +36,7 @@
     </nav>
     <section id="about">
         <h2>About</h2>     
-        <p>{{ juryclass.gender_votes((juryclass.make_vote_dict()), 'm4m') }} {{ juryclass.num_jury((juryclass.make_vote_dict())) }}During lockdown 2020, I watched a lot of Survivor.</p>
+        <p>During lockdown 2020, I watched a lot of Survivor.</p>
         <p>I've created a database of player information pulled from the first 40 seasons of Survivor and crunched some numbers. </p>
         <p>The code to the project, as well as a more technical breakdown to how I did everything, plus the database can be found <a href="#">here</a>. If anyone wants to keep this project up to date as new seasons air, I've included information in the Github on how to do that.</p>
         <h2>Acknowledgements</h2>
@@ -308,6 +308,32 @@
         </tbody>
     </table>
     {% endfor %}
+    </section>
+    <section id="votes-by-gender">
+        <h2>Jury Votes by Gender</h2>
+<p>A look at how jury members voted based on gender.</p>
+</article>
+<h3>Women</h3>
+<article>
+<div class="info" id="women-votes">
+<p>Women jury member votes for women finalist: {{ juryclass.gender_votes((juryclass.make_vote_dict()), 'w4w') }}</p>
+<p>Women jury member votes for men finalist: {{ juryclass.gender_votes((juryclass.make_vote_dict()), 'w4m') }}</p>
+<p>Women jury member votes for non-binary finalist: {{ juryclass.gender_votes((juryclass.make_vote_dict()), 'w4nb') }}</p>
+</div>
+<div class="pie">
+<img src="{{ url_for('static', filename='gender_pie_jury_women_cropped.png') }}">
+</div>
+</article>
+        <h3>Men</h3>
+<article>
+<div class="info" id="men-votes">
+<p>Men jury member votes for men finalist: {{ juryclass.gender_votes((juryclass.make_vote_dict()), 'm4m') }}</p>
+<p>Men jury member votes for women finalist: {{ juryclass.gender_votes((juryclass.make_vote_dict()), 'm4w') }}</p>
+<p>Men jury member votes for non-binary finalist: {{ juryclass.gender_votes((juryclass.make_vote_dict()), 'm4nb') }}</p>
+</div>
+<div class="pie">
+<img src="{{ url_for('static', filename='gender_pie_jury_men_cropped.png') }}">
+</div>
     </section>
 </main>
 <script>

@@ -2,7 +2,7 @@ from queries import query_db, get_db, DATABASE, num_seasons
 
 class winclass:
     def women_seasons():
-        women_seasons = query_db("SELECT Stats.season_id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Players.gender = 'F' AND Stats.sole_survivor = 1;")
+        women_seasons = query_db("SELECT Stats.season_id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Players.gender = 'W' AND Stats.sole_survivor = 1;")
         women_seasons_cleaned = []
         for x in range(len(women_seasons)):
             women_seasons_cleaned.append(women_seasons[x][0])
@@ -30,7 +30,7 @@ class winclass:
         return winner[0]
 
     def women_winners(table, column, it):
-        woman = query_db(f"SELECT {table}.{column} FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Players.gender = 'F' AND Stats.sole_survivor = 1 AND season_id = ?;", [it], one=True)
+        woman = query_db(f"SELECT {table}.{column} FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Players.gender = 'W' AND Stats.sole_survivor = 1 AND season_id = ?;", [it], one=True)
         return woman[0]
 
     def men_winners(table, column, it):
@@ -42,7 +42,7 @@ class winclass:
         return man[0]
 
     def num_women_winners():
-        women_seasons = query_db("SELECT Stats.season_id FROM Stats JOIN Players ON Players.id = Stats.player_id WHERE Players.gender = 'F' AND Stats.sole_survivor = 1;")
+        women_seasons = query_db("SELECT Stats.season_id FROM Stats JOIN Players ON Players.id = Stats.player_id WHERE Players.gender = 'W' AND Stats.sole_survivor = 1;")
         women_seasons_cleaned = []
         for x in range(len(women_seasons)):
             women_seasons_cleaned.append(women_seasons[x][0])

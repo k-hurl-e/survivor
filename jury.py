@@ -151,7 +151,7 @@ class juryclass:
             return w4w_votes
         if condition == 'w4m':
             w4m_votes = counter('W', 'M', diction)
-            return w4w_votes
+            return w4m_votes
         if condition == 'w4nb':
             w4nb_votes = counter('W', 'NB', diction)
             return w4nb_votes

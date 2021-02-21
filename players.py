@@ -2,7 +2,7 @@ from queries import query_db, get_db, DATABASE, num_seasons
 
 class playerclass:
     def women_players(table, column):
-        women_players = query_db(f"SELECT {table}.{column} FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Players.gender = 'F';")
+        women_players = query_db(f"SELECT {table}.{column} FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Players.gender = 'W';")
         women_players_cleaned = []
         for x in range(len(women_players)):
             women_seasons_cleaned.append(women_players[x][0])
@@ -26,7 +26,7 @@ class playerclass:
         return nb_players_cleaned
 
     def num_women_players():
-        women_players = query_db("SELECT Stats.name FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Players.gender = 'F';")
+        women_players = query_db("SELECT Stats.name FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Players.gender = 'W';")
         women_players_cleaned = []
         for x in range(len(women_players)):
             women_players_cleaned.append(women_players[x][0])
