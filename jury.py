@@ -122,9 +122,12 @@ class juryclass:
                 gender = query_db("SELECT Players.gender FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [cont, season])
                 vcf = query_db("SELECT Stats.final_vote_id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [cont, season])
                 vcf_clean = vcf[0][0]
+                #removes players who did have a jury vote on another season but no this one
+                if vcf_clean == None:
+                    continue
                 vcf_name = query_db("SELECT Stats.name FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [vcf_clean, season])
                 vcf_gender = query_db("SELECT Players.gender FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [vcf_clean, season])
-            voters[unique_id] = {'name': name[0][0], 'gender': gender[0][0], 'vote_cast_for_id': vcf_clean, 'vote_cast_for_name': vcf_name, 'vote_cast_for_gender': vcf_gender}
+            voters[unique_id] = {'name': name[0][0], 'gender': gender[0][0], 'vote_cast_for_id': vcf_clean, 'vote_cast_for_name': vcf_name[0][0], 'vote_cast_for_gender': vcf_gender[0][0]}
         return voters
 
 
