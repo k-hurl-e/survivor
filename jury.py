@@ -97,26 +97,57 @@ class juryclass:
             return players_votes
 
     def make_vote_dict():
-        players = query_db("SELECT Stats.player_id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id;")
+        players = query_db("SELECT Stats.player_id, Stats.final_vote_id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id;")
         clean_player_list = []
         unique = 10000
         for item in players:
-            if item[0] != None:
+            if item[1] != None:
                 clean_player_list.append(item[0])
         voters = {}
+        season = 1
         for cont in clean_player_list:
-            unique_id = cont
-            if unique_id in voters:
-                unique_id += unique
-                unique += 10000
-            name = query_db("SELECT Stats.name FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ?;", [unique_id])
-            gender = query_db("SELECT Players.gender FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ?;", [unique_id])
-            vcf = query_db("SELECT Stats.final_vote_id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ?;", [unique_id])
-            vcf_clean = vcf[0][0]
-            vcf_name = query_db("SELECT Stats.name FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ?;", [vcf_clean])
-            vcf_gender = query_db("SELECT Players.gender FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ?;", [vcf_clean])
-            # voters[cont] = {'name': name[0][0], 'gender': gender[0], 'vote_cast_for_id': vcf[0], 'vote_cast_for_name': vcf_name[0], 'vote_cast_for_gender': vcf_gender[0]}
-            return name[0][0]
+            check_season = query_db("SELECT Seasons.id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ?;", [cont])
+            check_season_clean = []
+            for item in check_season:
+                check_season_clean.append(item[0])
+            if season not in check_season_clean:
+                season += 1
+                continue
+            else:
+                unique_id = cont
+                if unique_id in voters:
+                    unique_id += unique
+                    unique += 10000
+                name = query_db("SELECT Stats.name FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [cont, season])
+                gender = query_db("SELECT Players.gender FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [cont, season])
+                vcf = query_db("SELECT Stats.final_vote_id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [cont, season])
+                vcf_clean = vcf[0][0]
+                vcf_name = query_db("SELECT Stats.name FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [vcf_clean, season])
+                vcf_gender = query_db("SELECT Players.gender FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [vcf_clean, season])
+            voters[unique_id] = {'name': name[0][0], 'gender': gender[0][0], 'vote_cast_for_id': vcf_clean, 'vote_cast_for_name': vcf_name, 'vote_cast_for_gender': vcf_gender}
+        return voters
+
+
+        # season = 0
+        # inc = 1
+        # for cont in clean_player_list:
+        #     unique_id = cont
+        #     move = 0
+        #     if unique_id in voters:
+        #         unique_id += unique
+        #         unique += 10000
+        #         move += inc
+        #         inc += 1
+        #     season_check = query_db("SELECT Seasons.id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ?;", [cont])
+            # if season_check[move][0] > season:
+            #     season += 1
+            # name = query_db("SELECT Stats.name FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [cont, season])
+            # gender = query_db("SELECT Players.gender FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [cont, season])
+            # vcf = query_db("SELECT Stats.final_vote_id FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [cont, season])
+            # vcf_clean = vcf
+            # vcf_name = query_db("SELECT Stats.name FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [vcf_clean, season])
+            # vcf_gender = query_db("SELECT Players.gender FROM Stats JOIN Players JOIN Seasons ON Players.id = Stats.player_id AND Stats.season_id = Seasons.id WHERE Stats.player_id = ? AND Stats.season_id = ?;", [vcf_clean, season])
+            # voters[unique_id] = {'name': name[0][0], 'gender': gender[0][0], 'vote_cast_for_id': vcf_clean, 'vote_cast_for_name': vcf_name, 'vote_cast_for_gender': vcf_gender}
 
 
 
