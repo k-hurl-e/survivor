@@ -59,7 +59,7 @@ nav.desktop-nav a:hover {
     color: #fff;
 }
 
-nav.desktop-nav #new-sec{
+nav.desktop-nav a.new-sec{
   text-decoration: underline;
   /* font-weight: bold; */
 }
