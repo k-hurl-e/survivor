@@ -68,9 +68,9 @@ nav.desktop-nav a.new-sec{
   #MAIN
 \* ---------------------- */
 
-section {
-    margin-left: 160px;
-    margin-right: 80px;
+main {
+  margin-left: 160px;
+  margin-right: 80px;
 }
 
 section a {
@@ -121,6 +121,16 @@ tbody tr:hover {
 }
 
 /* ---------------------- *\
+  #SCROLL-EFFECT
+\* ---------------------- */
+
+section.scroll-effect {
+  width: 100%;
+  height: 2000px;
+  background: black;
+}
+
+/* ---------------------- *\
   #PIE-CHART-ARTICLES
 \* ---------------------- */
 
@@ -166,7 +176,9 @@ p + article {
 \* ---------------------- */
 
 @media screen and (max-width: 1080px) {
-    margin-right: 80px;
+    main {
+      margin-right: 80px;
+    }
 }
 
 @media screen and (max-width: 920px) {
