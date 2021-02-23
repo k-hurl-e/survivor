@@ -127,7 +127,16 @@ tbody tr:hover {
 section.scroll-effect {
   width: 100%;
   height: 2000px;
-  background: black;
+  display: block;
+}
+
+section.scroll-effect #tally {
+  width: 80%;
+  height: auto;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  left: 20%;
 }
 
 /* ---------------------- *\
