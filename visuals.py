@@ -14,7 +14,7 @@ class visualmaker:
         plt.rcParams['text.color'] = 'white'
         labels = label1, label2
         sizes = [value1, value2]
-        explode = (0, 0)  # tells which slice to "explode
+        explode = (0, 0)  # tells which slice to "explode"
         colors_list = [color1, color2]
         fig1, ax1 = plt.subplots()
         ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
@@ -25,7 +25,7 @@ class visualmaker:
         imgPath = 'static/' + file_name + '.png'
         img = Image.open(imgPath)
         width, height = img.size
-        box = ((width / 8 - width / 32), 60, (width - width / 8 + width / 32), (height - height / 8))
+        box = ((width / 8 - width / 32), (height / 8), (width - width / 8 + width / 32), (height - height / 8))
         croppedImage = img.crop(box)
         croppedImage.save('static/' + file_name + '_cropped.png')
 
@@ -34,7 +34,7 @@ class visualmaker:
         plt.rcParams['text.color'] = 'white'
         labels = label1, label2, label3, label4
         sizes = [value1, value2, value3, value4]
-        explode = (0, 0, 0, 0)  # tells which slice to "explode
+        explode = (0, 0, 0, 0)  # tells which slice to "explode"
         colors_list = [color1, color2, color3, color4]
         fig1, ax1 = plt.subplots()
         ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
@@ -54,7 +54,7 @@ class visualmaker:
         plt.rcParams['text.color'] = 'white'
         labels = label1, label2, label3, label4, label5
         sizes = [value1, value2, value3, value4, value5]
-        explode = (0, 0, 0, 0, 0)  # tells which slice to "explode
+        explode = (0, 0, 0, 0, 0)  # tells which slice to "explode"
         colors_list = [color1, color2, color3, color4, color5]
         fig1, ax1 = plt.subplots()
         ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
@@ -65,7 +65,6 @@ class visualmaker:
         imgPath = 'static/' + file_name + '.png'
         img = Image.open(imgPath)
         width, height = img.size
-        box = ((width / 8 - width / 32), (height / 12), (width - width / 8 + width / 32), (height - height / 24))
+        box = ((width / 8 - width / 32), (height / 12), (width - width / 8 + width / 32), (height - height / 12))
         croppedImage = img.crop(box)
         croppedImage.save('static/' + file_name + '_cropped.png')
-        # 70 40 570 460

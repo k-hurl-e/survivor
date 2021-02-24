@@ -59,9 +59,15 @@ nav.desktop-nav a:hover {
     color: #fff;
 }
 
-nav.desktop-nav a.new-sec{
-  text-decoration: underline;
-  /* font-weight: bold; */
+mobile-icon {
+  display: none;
+}
+
+nav.mobile-nav {
+  position: fixed;
+  display: block;
+  background: rgba(255, 255, 255, 0.4);
+  color: black;
 }
 
 /* ---------------------- *\
@@ -83,7 +89,6 @@ section a:hover {
 
 table {
     width: 100%;
-    min-width: 742px;
     border-collapse: collapse;
     overflow: hidden;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
@@ -131,12 +136,11 @@ section.scroll-effect {
 }
 
 section.scroll-effect #tally {
-  width: 80%;
+  width: 100%;
   height: auto;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
-  left: 20%;
 }
 
 /* ---------------------- *\
@@ -149,6 +153,7 @@ article {
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
+  flex-flow: row;
   justify-content: center; 
   align-items: center; 
   margin-bottom: 50px; 
@@ -156,15 +161,16 @@ article {
   border-radius: 10px;
   border: 2px solid white;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 p + article {
     margin-top: 40px;
 }
 
-.pie img {
+.pie {
   width: 500px;
-  /* margin-bottom: 40px; */
 }
 
 .info {
@@ -184,21 +190,37 @@ p + article {
   #MEDIA-QUERIES
 \* ---------------------- */
 
-@media screen and (max-width: 1080px) {
-    main {
-      margin-right: 80px;
-    }
-}
-
 @media screen and (max-width: 920px) {
-    
-}
-
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
+    .desktop-nav {
+      display: none;
+      opacity: 0%;
     }
-    .sidenav a {
-        font-size: 18px;
+
+    main {
+      margin: 0 30px;
+    }
+
+    table {
+      font-size: 10px;
+    }
+
+    article {
+      flex-flow: column;
+      justify-content: center; 
+      align-items: center; 
+      margin-bottom: 50px; 
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    .pie {
+      padding-top: 20px;
+      width: 80%;
+    }
+
+    .info {
+      width: 60%;
+      margin: 0 auto;
+      text-align: center;
     }
 }

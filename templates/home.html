@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">    
     <meta name="description" content="Survivor">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
@@ -13,17 +13,26 @@
 <header>
     <img id="logo" src="{{ url_for('static', filename='survivordata.png') }}" alt="Survivor Data Logo">
 </header>
+<nav class="mobile-nav">
+    <a href="#">Top</a>
+    <a href="#about">About</a>
+    <a href="#list-of-winners">List of Winners</a>
+    <a href="#winners-by-gender">Winners by Gender</a>
+    <a href="#winners-by-age">Winners by Age</a>
+    <a href="#winners-by-region">Winners by Region</a>
+    <a href="#unanimous-winners">Unanimous Winners</a>
+    <a href="#close-votes">Close Votes</a>
+    <a href="#votes-by-gender">Votes by Gender</a>
+</nav>
 <main>
 <body>
     <nav class="desktop-nav">
         <a href="#">Top</a>
         <a href="#about">About</a>
-        <a class="new-sec" href="#list-of-winners">Winners:</a>
         <a href="#list-of-winners">List of Winners</a>
         <a href="#winners-by-gender">Winners by Gender</a>
         <a href="#winners-by-age">Winners by Age</a>
         <a href="#winners-by-region">Winners by Region</a>
-        <a class="new-sec" href="#unanimous-winners">Jury:</a>
         <a href="#unanimous-winners">Unanimous Winners</a>
         <a href="#close-votes">Close Votes</a>
         <a href="#votes-by-gender">Votes by Gender</a>
@@ -32,7 +41,7 @@
         <h2>About</h2>     
         <p>During lockdown 2020, I watched a lot of Survivor.</p>
         <p>I've created a database of player information pulled from the first 40 seasons of Survivor and crunched some numbers. </p>
-        <p>The code to the project, as well as a more technical breakdown to how I did everything, plus the database can be found <a href="#">here</a>. If anyone wants to keep this project up to date as new seasons air, I've included information in the Github on how to do that.</p>
+        <p>The code to the project, as well as a more technical breakdown to how I did everything, plus the database can be found <a href="#">here</a>. If anyone wants to help keep this project up to date as new seasons air, I've included information in the Github on how to do that.</p>
         <h2>Acknowledgements</h2>
         <p>I started this database with data from <a href="https://survivor.fandom.com/wiki/Main_Page">Survivor Wiki</a>, and added additional information to it.</p>
         <h2>And now...</h2>
@@ -45,7 +54,7 @@
 SVG created from jpg by potrace 1.10, written by Peter Selinger 2001-2011
 </metadata>
 <g transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)"
-fill="none" stroke="#fff" stroke-width="15" id="tally-g">
+fill="none" stroke="#fff" stroke-width="30" id="tally-g">
 <path id="tally-path" d="M1830 7551 c-37 -9 -109 -59 -153 -105 -43 -45 -157 -211 -157 -228
 0 -6 -6 -19 -13 -27 -7 -9 -28 -50 -46 -91 -52 -115 -55 -123 -101 -250 -7
 -19 -15 -48 -18 -65 -2 -16 -11 -39 -18 -50 -8 -11 -14 -29 -14 -40 0 -12 -6
@@ -350,8 +359,6 @@ m996 -36 c9 -61 -4 -198 -23 -243 -29 -69 -42 -97 -79 -174 -46 -95 -66 -99
     <thead>
         <tr>
             <th>Name</th>
-            <th>Age (at time of filming)</th>
-            <th>Hometown</th>
             <th>Season #</th>
             <th>Season Name</th>
             <th>Tribal Wins</th>
@@ -363,8 +370,6 @@ m996 -36 c9 -61 -4 -198 -23 -243 -29 -69 -42 -97 -79 -174 -46 -95 -66 -99
         {% for i in winclass.men_seasons() %}
         <tr>
             <td>{{ winclass.men_winners('Players', 'name', i) }}</td>
-            <td>{{ winclass.men_winners('Stats', 'age_time_of_filming', i) }} </td>
-            <td>{{ winclass.men_winners('Stats', 'hometown', i) }}</td>
             <td>{{ i }}</td>
             <td>{{ winclass.men_winners('Seasons', 'season', i) }}</td>
             <td>{{ winclass.men_winners('Stats', 'tribal_wins', i) }}</td>
@@ -381,9 +386,7 @@ m996 -36 c9 -61 -4 -198 -23 -243 -29 -69 -42 -97 -79 -174 -46 -95 -66 -99
 <p>Men Players: {{ playerclass.num_men_players() }}</p>
 <p>Non-Binary Players: {{ playerclass.num_nb_players() }}</p>
 </div>
-<div class="pie">
-<img src="{{ url_for('static', filename='gender_pie_players_cropped.png') }}">
-</div>
+<img class="pie" src="{{ url_for('static', filename='gender_pie_players_cropped.png') }}">
 </article>
 <h3>Winners</h3>
 <article>
@@ -392,9 +395,7 @@ m996 -36 c9 -61 -4 -198 -23 -243 -29 -69 -42 -97 -79 -174 -46 -95 -66 -99
 <p>Men Winners: {{ winclass.num_men_winners() }}</p>
 <p>Non-Binary Winners: {{ winclass.num_nb_winners() }}</p>
 </div>
-<div class="pie">
-<img src="{{ url_for('static', filename='gender_pie_winners_cropped.png') }}">
-</div>
+<img class="pie" src="{{ url_for('static', filename='gender_pie_winners_cropped.png') }}">
 </article>
 </section>
 <section id="winners-by-age">
@@ -452,9 +453,7 @@ m996 -36 c9 -61 -4 -198 -23 -243 -29 -69 -42 -97 -79 -174 -46 -95 -66 -99
 <p>40-49 Players: {{ playerclass.age_group_players(40, 49) }}</p>
 <p>50+ Players: {{ playerclass.age_group_players(50, 100) }}</p>
 </div>
-<div class="pie">
-<img src="{{ url_for('static', filename='age_pie_players_cropped.png') }}">
-</div>
+<img class="pie" src="{{ url_for('static', filename='age_pie_players_cropped.png') }}">
 </article>
 <h3>Winners</h3>
 <article>
@@ -464,9 +463,7 @@ m996 -36 c9 -61 -4 -198 -23 -243 -29 -69 -42 -97 -79 -174 -46 -95 -66 -99
 <p>40-49 Winners: {{ winclass.age_group_winners(40, 49) }}</p>
 <p>50+ Winners: {{ winclass.age_group_winners(50, 100) }}</p>
 </div>
-<div class="pie">
-<img src="{{ url_for('static', filename='age_pie_winners_cropped.png') }}">
-</div>
+<img class="pie" src="{{ url_for('static', filename='age_pie_winners_cropped.png') }}">
 </article>
 </section>
 <section id="winners-by-region">
@@ -481,9 +478,7 @@ m996 -36 c9 -61 -4 -198 -23 -243 -29 -69 -42 -97 -79 -174 -46 -95 -66 -99
     <p>Western Players: {{ playerclass.num_western_players() }}</p>
     <p>Midwest Players: {{ playerclass.num_midwest_players() }}</p>
     </div>
-    <div class="pie">
-    <img src="{{ url_for('static', filename='region_pie_players_cropped.png') }}">
-    </div>
+    <img class="pie" src="{{ url_for('static', filename='region_pie_players_cropped.png') }}">
     </article>
     <h3>Winners</h3>
     <article>
@@ -494,9 +489,7 @@ m996 -36 c9 -61 -4 -198 -23 -243 -29 -69 -42 -97 -79 -174 -46 -95 -66 -99
         <p>Western Winners: {{ winclass.num_western_winners() }}</p>
         <p>Midwest Winners: {{ winclass.num_midwest_winners() }}</p>
     </div>
-    <div class="pie">
-    <img src="{{ url_for('static', filename='region_pie_winners_cropped.png') }}">
-    </div>
+    <img class="pie" src="{{ url_for('static', filename='region_pie_winners_cropped.png') }}">
     </article>
     <div class="clarify">
         <p>Southern: TX, OK, LA, AR, MS, AL, GA, TN, KY, FL, SC, NC
@@ -567,9 +560,7 @@ m996 -36 c9 -61 -4 -198 -23 -243 -29 -69 -42 -97 -79 -174 -46 -95 -66 -99
 <p>Men jury members: {{ juryclass.gender_jury((juryclass.make_vote_dict()), 'M') }}</p>
 <p>Non-binary jury members: {{ juryclass.gender_jury((juryclass.make_vote_dict()), 'NB') }}</p>
 </div>
-<div class="pie">
-<img src="{{ url_for('static', filename='gender_pie_jury_alljury_cropped.png') }}">
-</div>
+<img class="pie" src="{{ url_for('static', filename='gender_pie_jury_alljury_cropped.png') }}">
 </article>
 <h3>Women</h3>
 <article>
@@ -578,9 +569,7 @@ m996 -36 c9 -61 -4 -198 -23 -243 -29 -69 -42 -97 -79 -174 -46 -95 -66 -99
 <p>Women jury member votes for men finalist: {{ juryclass.gender_votes((juryclass.make_vote_dict()), 'w4m') }}</p>
 <p>Women jury member votes for non-binary finalist: {{ juryclass.gender_votes((juryclass.make_vote_dict()), 'w4nb') }}</p>
 </div>
-<div class="pie">
-<img src="{{ url_for('static', filename='gender_pie_jury_women_cropped.png') }}">
-</div>
+<img class="pie" src="{{ url_for('static', filename='gender_pie_jury_women_cropped.png') }}">
 </article>
         <h3>Men</h3>
 <article>
@@ -589,9 +578,7 @@ m996 -36 c9 -61 -4 -198 -23 -243 -29 -69 -42 -97 -79 -174 -46 -95 -66 -99
 <p>Men jury member votes for women finalist: {{ juryclass.gender_votes((juryclass.make_vote_dict()), 'm4w') }}</p>
 <p>Men jury member votes for non-binary finalist: {{ juryclass.gender_votes((juryclass.make_vote_dict()), 'm4nb') }}</p>
 </div>
-<div class="pie">
-<img src="{{ url_for('static', filename='gender_pie_jury_men_cropped.png') }}">
-</div>
+<img class="pie" src="{{ url_for('static', filename='gender_pie_jury_men_cropped.png') }}">
 </article>
     </section>
 </main>
@@ -618,21 +605,53 @@ $(document).ready(() => {
         
         if (scrollPercentage >= 0.25) {
             path.style.strokeDasharray = "none";
-            $('#tally-g').css('fill', '#ffffff');
+            $('#tally-g').css('fill', '#A1BE37');
+            $('svg').css('background', "url('https://www.realityblurred.com/realitytv/images/2019/12/jeff-probst-torch-snuff-survivor-season-39-episode-10.jpg')");
+            $('svg').css('background-size', "cover");
         } 
         else {
             path.style.strokeDasharray = pathLength + ' ' + pathLength;
             $('#tally-g').css('fill', 'none');
+            $('svg').css('background', 'none');
         }
     }); 
-    
+}); 
 
-    // nav bar appear effect
-    const $navbar = $('nav');
+// nav bar appear effect
+var size = {
+  width: window.innerWidth || document.body.clientWidth,
+  height: window.innerHeight || document.body.clientHeight
+}
+
+const $navbar = $('.desktop-nav');
+if(size.width > 920) {
     $(document).scroll(function() {
-        $navbar.css({display: $(this).scrollTop() > 300? "block":"none"});
+        if($(this).scrollTop() > 300) {
+            $navbar.css('display', 'block');
+        }
     });
-});
+} else {
+    $navbar.css('display', 'none');
+}
+
+// scroll effect js
+$('#tally').css('margin-top', `${(size.height / 4)}px`);
+
+// $('.mobile-nav').css('width', `${size.width}px`);
+// $('.mobile-nav').css('height', `${size.height}px`);
+
+
+// const $navbar = $('.desktop-nav');
+// if(size.width > 920) {
+//     $(document).scroll(function() {
+//         if($(this).scrollTop() > 300) {
+//             $navbar.css('display', 'block');
+//         }
+//     });
+// } else {
+//     $navbar.css('display', 'none');
+// }
+
 </script>
 </body>
 
