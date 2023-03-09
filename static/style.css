@@ -63,13 +63,6 @@ mobile-icon {
   display: none;
 }
 
-nav.mobile-nav {
-  position: fixed;
-  display: block;
-  background: rgba(255, 255, 255, 0.4);
-  color: black;
-}
-
 /* ---------------------- *\
   #MAIN
 \* ---------------------- */
