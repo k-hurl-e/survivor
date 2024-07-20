@@ -2,7 +2,7 @@
 
 # Survivor
 
-Flask app that displays data from the first 40 seasons of Survivor queried from an SQLite database. View [here]().
+Flask app that displays data from the first 40 seasons of Survivor queried from an SQLite database.
 
 ## About
 
@@ -15,5 +15,3 @@ If anyone is interested in keeping this project going, I've tried to design the 
 The only update to the code you need to make for simply adding players/seasons is to go into `queries.py` and change the variable `num_seasons` to match how many seasons are in the database. 
 
 Once the database is updated send me a pull request. If all looks good and I merge the info and graphs should auto update with the new deploy.
-
-## Notes on Data Collection
